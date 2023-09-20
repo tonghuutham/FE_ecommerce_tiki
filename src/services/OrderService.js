@@ -1,13 +1,13 @@
 import { axiosJWT } from "./UserService";
 
 // export const createProduct = async (data) => {
-//   const res = await axios.post(`http://localhost:3001/api/product/create`, data)
+//   const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/create`, data)
 //   return res.data
 // // }
-// http://localhost:3001/api/order/get-order-details/639724669c6dda4fa11edcde
+// ${process.env.REACT_APP_API_URL}/order/get-order-details/639724669c6dda4fa11edcde
 export const createOrder = async (data, access_token) => {
   const res = await axiosJWT.post(
-    `http://localhost:3001/api/order/create/${data.user}`,
+    `${process.env.REACT_APP_API_URL}/order/create/${data.user}`,
     data,
     {
       headers: {
@@ -20,7 +20,7 @@ export const createOrder = async (data, access_token) => {
 
 export const getOrderByUserId = async (id, access_token) => {
   const res = await axiosJWT.get(
-    `http://localhost:3001/api/order/get-all-order/${id}`,
+    `${process.env.REACT_APP_API_URL}/order/get-all-order/${id}`,
     {
       headers: {
         token: `Bearer ${access_token}`,
@@ -32,7 +32,7 @@ export const getOrderByUserId = async (id, access_token) => {
 
 export const getDetailsOrder = async (id, access_token) => {
   const res = await axiosJWT.get(
-    `http://localhost:3001/api/order/get-details-order/${id}`,
+    `${process.env.REACT_APP_API_URL}/order/get-details-order/${id}`,
     {
       headers: {
         token: `Bearer ${access_token}`,
@@ -45,7 +45,7 @@ export const getDetailsOrder = async (id, access_token) => {
 export const cancelOrder = async (id, access_token, orderItems, userId) => {
   const data = { orderItems, orderId: id };
   const res = await axiosJWT.delete(
-    `http://localhost:3001/api/order/cancel-order/${userId}`,
+    `${process.env.REACT_APP_API_URL}/order/cancel-order/${userId}`,
     { data },
     {
       headers: {
@@ -58,7 +58,7 @@ export const cancelOrder = async (id, access_token, orderItems, userId) => {
 
 export const getAllOrder = async (access_token) => {
   const res = await axiosJWT.get(
-    `http://localhost:3001/api/order/get-all-order`,
+    `${process.env.REACT_APP_API_URL}/order/get-all-order`,
     {
       headers: {
         token: `Bearer ${access_token}`,
